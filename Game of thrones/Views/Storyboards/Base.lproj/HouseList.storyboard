@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="92L-xM-v5e">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Houses-->
+        <scene sceneID="Edv-lx-5ON">
+            <objects>
+                <tableViewController storyboardIdentifier="houseListVC" id="AQ1-lp-ii5" customClass="HouseListViewController" customModule="Game_of_thrones" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ky9-9j-fVb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="houseCell" rowHeight="80" id="QSf-Lx-1UV" customClass="HouseTableViewCell" customModule="Game_of_thrones" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QSf-Lx-1UV" id="87l-3z-SfE">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House Algood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mt-ww-Rh3">
+                                            <rect key="frame" x="20" y="16" width="344" height="22"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Westerlands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqt-OE-xvi">
+                                            <rect key="frame" x="20" y="38" width="344" height="18"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greaterthan.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bVf-hB-ang">
+                                            <rect key="frame" x="364" y="25.5" width="30" height="29"/>
+                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="H3p-3C-Ban"/>
+                                                <constraint firstAttribute="width" constant="30" id="IoA-Z7-Qxt"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bVf-hB-ang" firstAttribute="leading" secondItem="8mt-ww-Rh3" secondAttribute="trailing" id="7EU-Rw-CyZ"/>
+                                        <constraint firstItem="bVf-hB-ang" firstAttribute="leading" secondItem="wqt-OE-xvi" secondAttribute="trailing" id="T5d-dW-vHu"/>
+                                        <constraint firstItem="bVf-hB-ang" firstAttribute="centerY" secondItem="87l-3z-SfE" secondAttribute="centerY" id="Ur2-Zx-aKH"/>
+                                        <constraint firstItem="wqt-OE-xvi" firstAttribute="top" secondItem="8mt-ww-Rh3" secondAttribute="bottom" id="VEy-ep-ERe"/>
+                                        <constraint firstItem="8mt-ww-Rh3" firstAttribute="leading" secondItem="87l-3z-SfE" secondAttribute="leadingMargin" id="g0U-ka-Ecl"/>
+                                        <constraint firstItem="wqt-OE-xvi" firstAttribute="leading" secondItem="8mt-ww-Rh3" secondAttribute="leading" id="hkX-SE-fAI"/>
+                                        <constraint firstItem="8mt-ww-Rh3" firstAttribute="top" secondItem="87l-3z-SfE" secondAttribute="topMargin" constant="5" id="sDM-ha-gtB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bVf-hB-ang" secondAttribute="trailing" id="zjF-ZQ-aYa"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="8mt-ww-Rh3" id="Sms-Sz-Ize"/>
+                                    <outlet property="regionLabel" destination="wqt-OE-xvi" id="A06-XI-IYl"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="80" id="JLl-LN-uJx" customClass="LoadingCell" customModule="Game_of_thrones" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="124.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JLl-LN-uJx" id="rcn-Av-Fbt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eo3-8h-pML">
+                                            <rect key="frame" x="197" y="30" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eo3-8h-pML" firstAttribute="centerX" secondItem="rcn-Av-Fbt" secondAttribute="centerX" id="44u-pJ-6ui"/>
+                                        <constraint firstItem="eo3-8h-pML" firstAttribute="centerY" secondItem="rcn-Av-Fbt" secondAttribute="centerY" id="4Eq-GJ-4NS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="eo3-8h-pML" id="mrR-Xu-MXZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AQ1-lp-ii5" id="f0z-0w-t6w"/>
+                            <outlet property="delegate" destination="AQ1-lp-ii5" id="ZGH-vb-FDu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Houses" id="LRq-Um-nBE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KON-BX-9vw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762.3188405797102" y="187.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dwn-Xm-Nft">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="92L-xM-v5e" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yrz-F1-ffq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AQ1-lp-ii5" kind="relationship" relationship="rootViewController" id="Nkz-t3-NMK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="old-0N-Bsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852.17391304347836" y="187.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="greaterthan.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
