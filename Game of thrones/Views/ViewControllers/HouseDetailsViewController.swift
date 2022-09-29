@@ -10,7 +10,7 @@ import UIKit
 ///Protocol used to communicate betwen HouseDetailsViewController and HouseDetailsViewModel
 protocol HouseDetailsControllerDelegate {
     func didFinishFetchingHouseDetails()
-    func errorFetchingHouseDetails(error: Error)
+    func errorFetchingHouseDetails(error: NetworkError)
 }
 
 class HouseDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HouseDetailsControllerDelegate {
@@ -43,10 +43,21 @@ class HouseDetailsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     ///Function called from HouseDetailsViewModel when there's been an error fetching houses
-    func errorFetchingHouseDetails(error: Error) {
+    func errorFetchingHouseDetails(error: NetworkError) {
         DispatchQueue.main.async {
+            
+            var errorMessage = ""
             self.activityIndicator.stopAnimating()
-            showRetryAlert(title: "Network error", message: error.localizedDescription, vc: self) {
+            
+            switch error {
+            case .customError(let customError):
+                errorMessage = customError.localizedDescription
+                
+            default:
+                errorMessage = error.localizedDescription
+            }
+            
+            showRetryAlert(title: "Network error", message: errorMessage, vc: self) {
                 self.activityIndicator.startAnimating()
                 self.houseDetailsVM.getHouseDetails()
             }
