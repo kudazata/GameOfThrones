@@ -9,6 +9,7 @@ import Foundation
 
 /// ViewModel for HouseDetailCell
 struct HouseDetailItemViewModel {
+    
     private let houseDetailItem: HouseDetailItem
     
     init(_ houseDetailItem: HouseDetailItem) {

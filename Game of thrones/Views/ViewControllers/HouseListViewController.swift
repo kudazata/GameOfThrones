@@ -53,7 +53,17 @@ class HouseListViewController: UITableViewController, HouseListControllerDelegat
     /// Delegate method called from HouseListViewModel when an error has occured whilst fetching houses from backend
     func errorFetchingHouses(error: NetworkError) {
         DispatchQueue.main.async {
-            showRetryAlert(title: "Network error", message: error.localizedDescription, vc: self) {
+            
+            var errorMessage = ""
+            switch error {
+                
+            case .customError(let customError):
+                errorMessage = customError.localizedDescription
+            default:
+                errorMessage = error.localizedDescription
+            }
+
+            showRetryAlert(title: "Network error", message: errorMessage, vc: self) {
                 self.houseListViewModel.fetchHouses(pageNumber: self.pageNumber)
             }
         }

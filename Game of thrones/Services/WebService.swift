@@ -7,16 +7,22 @@
 
 import Foundation
 
+enum Causation {
+    case bad
+    case good
+}
+
 /// The different error types that might occur when making network calls
 enum NetworkError: Error {
     case badUrl
     case decodingError
     case badRequest
     case noData
-    case custom(Error)
+    case customError(Error)
 }
 
 extension NetworkError: LocalizedError {
+    
     public var errorDescription: String? {
         return "There was an error connecting to our server. Please try again"
     }
@@ -46,7 +52,7 @@ final class WebService {
         URLSession.shared.dataTask(with: url) { data, response, error in
             
             if let error = error {
-                completion(.failure(.custom(error)))
+                completion(.failure(.customError(error)))
                 return
             }
             

@@ -66,7 +66,7 @@ class HouseListViewModel {
                 self.delegate?.didFetchHouses()
             }
             else {
-                print("no houses")
+                self.delegate?.errorFetchingHouses(error: .decodingError)
             }
         }
     }
