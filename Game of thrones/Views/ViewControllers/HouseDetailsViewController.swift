@@ -21,6 +21,7 @@ class HouseDetailsViewController: UIViewController, UITableViewDelegate, UITable
     var pageTitle = ""
     var house: House!
     var houseDetailsVM = HouseDetailsViewModel()
+    var webService: WebServiceProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class HouseDetailsViewController: UIViewController, UITableViewDelegate, UITable
         self.navigationItem.title = pageTitle
         houseDetailsVM.house = house
         houseDetailsVM.delegate = self
+        houseDetailsVM.webService = webService
         houseDetailsVM.getHouseDetails()
     }
 
@@ -37,6 +39,7 @@ class HouseDetailsViewController: UIViewController, UITableViewDelegate, UITable
     ///Function called from HouseDetailsViewModel when fetching house details is finished
     func didFinishFetchingHouseDetails() {
         DispatchQueue.main.async {
+            print(self.houseDetailsVM.numberOfRowsInSection(0))
             self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
         }

@@ -11,49 +11,20 @@ import XCTest
 class HouseListViewModelTests: XCTestCase {
     
     var houseListViewModel: HouseListViewModel!
+    var webService: WebServiceProtocol?
 
     override func setUpWithError() throws {
         
         houseListViewModel = HouseListViewModel()
-        let house1 = House(url: "",
-                           name: "Test House 1",
-                           region: "The North",
-                           coatOfArms: "A silver sword",
-                           words: "No words",
-                           titles: ["Lord", "King"],
-                           seats: ["Godsgrace", ""],
-                           currentLord: "Lord Bayley",
-                           heir: "Lord Jeffery",
-                           overlord: "House of commons",
-                           founded: "1900",
-                           founder: "Lord disick",
-                           diedOut: "1920",
-                           ancestralWeapons: ["Knife", "Gun"],
-                           cadetBranches: ["", ""],
-                           swornMembers: ["Ariana", "Caroline"])
+        webService = WebServiceMock(shouldReturnError: false)
+        houseListViewModel.webService = webService
+        houseListViewModel.fetchHouses(pageNumber: 1)
         
-        let house2 = House(url: "",
-                           name: "Test House 2",
-                           region: "Test region",
-                           coatOfArms: "A golden wreath",
-                           words: "No words",
-                           titles: ["Lord", "King"],
-                           seats: ["Godsgrace", ""],
-                           currentLord: "Lord Bayley",
-                           heir: "Lord Jeffery",
-                           overlord: "House of commons",
-                           founded: "1900",
-                           founder: "Lord disick",
-                           diedOut: "1920",
-                           ancestralWeapons: ["Knife", "Gun"],
-                           cadetBranches: ["", ""],
-                           swornMembers: ["Ariana", "Caroline"])
-        
-        houseListViewModel.houses = [house1, house2]
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        houseListViewModel = nil
+        webService = nil
     }
     
     /// Ensure that HouseListViewModel returns 2 sections
@@ -69,17 +40,9 @@ class HouseListViewModelTests: XCTestCase {
     /// Ensure that HouseListViewModel returns the correct HouseViewModel object with the correct data  for a given index
     func test_should_return_correct_house_at_index() {
         let houseAtIndex = houseListViewModel.houseAtIndex(0)
-        XCTAssertEqual(houseAtIndex.name, "Test House 1")
-        XCTAssertEqual(houseAtIndex.region, "The North")
+        XCTAssertEqual(houseAtIndex.name, houseListViewModel.houses[0].name)
+        XCTAssertEqual(houseAtIndex.region, houseListViewModel.houses[0].region)
     }
     
-    
-    
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }

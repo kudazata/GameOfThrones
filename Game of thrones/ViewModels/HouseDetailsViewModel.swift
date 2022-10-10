@@ -17,6 +17,7 @@ class HouseDetailsViewModel {
     
     var house: House?
     var delegate: HouseDetailsControllerDelegate?
+    var webService: WebServiceProtocol?
     
     /// Property in House object. Will be fetched from backend if url provided
     var currentLord: Character?
@@ -185,7 +186,7 @@ class HouseDetailsViewModel {
     /// - Parameter urlString: url for currentLord resource
     func getCurrentLord(urlString: String) {
         self.dispatchGroup.enter()
-        WebService().getCharacter(url: urlString) { character, error in
+        webService?.getCharacter(url: urlString) { character, error in
             
             if let error = error {
                 self.delegate?.errorFetchingHouseDetails(error: error)
@@ -205,7 +206,7 @@ class HouseDetailsViewModel {
         
         self.dispatchGroup.enter()
         
-        WebService().getCharacter(url: urlString) { character, error in
+        webService?.getCharacter(url: urlString) { character, error in
             
             if let error = error {
                 self.delegate?.errorFetchingHouseDetails(error: error)
@@ -226,7 +227,7 @@ class HouseDetailsViewModel {
         
         self.dispatchGroup.enter()
         
-        WebService().getHouse(url: urlString) { house, error in
+        webService?.getHouse(url: urlString) { house, error in
             
             if let error = error {
                 self.delegate?.errorFetchingHouseDetails(error: error)
@@ -246,7 +247,7 @@ class HouseDetailsViewModel {
     func getFounder(urlString: String) {
         self.dispatchGroup.enter()
         
-        WebService().getCharacter(url: urlString) { character, error in
+        webService?.getCharacter(url: urlString) { character, error in
             
             if let error = error {
                 self.delegate?.errorFetchingHouseDetails(error: error)
@@ -269,7 +270,7 @@ class HouseDetailsViewModel {
         for urlString in urlStrings {
             if let _ = URL(string: urlString) {
                 self.dispatchGroup.enter()
-                WebService().getHouse(url: urlString) { house, error in
+                webService?.getHouse(url: urlString) { house, error in
                     
                     if let error = error {
                         self.delegate?.errorFetchingHouseDetails(error: error)
@@ -295,7 +296,7 @@ class HouseDetailsViewModel {
         for urlString in urlStrings {
             if let _ = URL(string: urlString) {
                 self.dispatchGroup.enter()
-                WebService().getCharacter(url: urlString) { character, error in
+                webService?.getCharacter(url: urlString) { character, error in
                     
                     if let error = error {
                         self.delegate?.errorFetchingHouseDetails(error: error)

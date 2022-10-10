@@ -11,52 +11,15 @@ import XCTest
 class HouseListViewControllerTests: XCTestCase {
     
     var sut: HouseListViewController!
-    var houseListViewModel: HouseListViewModel!
-    var house1: House!
-    var house2: House!
 
     override func setUpWithError() throws {
         sut = UIStoryboard(name: "HouseList", bundle: nil).instantiateViewController(withIdentifier: "houseListVC") as? HouseListViewController
-        houseListViewModel = HouseListViewModel()
-        
-        house1 = House(url: "",
-                       name: "Test House 1",
-                       region: "Test region",
-                       coatOfArms: "A golden wreath",
-                       words: "No words",
-                       titles: ["Lord", "King"],
-                       seats: ["Godsgrace", ""],
-                       currentLord: "Lord Bayley",
-                       heir: "Lord Jeffery",
-                       overlord: "House of commons",
-                       founded: "1900",
-                       founder: "Lord disick",
-                       diedOut: "1920",
-                       ancestralWeapons: ["Knife", "Gun"],
-                       cadetBranches: ["", ""],
-                       swornMembers: ["Ariana", "Caroline"])
-        
-        house2 = House(url: "",
-                       name: "Test House 2",
-                       region: "Test region",
-                       coatOfArms: "A golden wreath",
-                       words: "No words",
-                       titles: ["Lord", "King"],
-                       seats: ["Godsgrace", ""],
-                       currentLord: "Lord Bayley",
-                       heir: "Lord Jeffery",
-                       overlord: "House of commons",
-                       founded: "1900",
-                       founder: "Lord disick",
-                       diedOut: "1920",
-                       ancestralWeapons: ["Knife", "Gun"],
-                       cadetBranches: ["", ""],
-                       swornMembers: ["Ariana", "Caroline"])
-        
-        sut.houseListViewModel = houseListViewModel
+        sut.webService = WebServiceMock(shouldReturnError: false)
+        _ = sut.view
     }
 
     override func tearDownWithError() throws {
+        sut = nil
     }
     
     ///Ensure that tableView in HouseListViewController returns 2 sections
@@ -66,9 +29,8 @@ class HouseListViewControllerTests: XCTestCase {
     
     ///Ensure that tableView in HouseListViewController returns correct number of rows from the data source
     func testTableView_shouldReturnCorrectNumberOfRows() {
-        houseListViewModel.houses = [house1, house2, house1, house2]
         sut.tableView.reloadData()
-        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 4)
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 2)
     }
 
 }

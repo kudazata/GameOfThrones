@@ -48,7 +48,7 @@ class HouseTableViewCellTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        
+        tableView = nil
     }
 
     func testPerformanceExample() throws {

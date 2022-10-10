@@ -16,12 +16,21 @@ protocol HouseListControllerDelegate {
 class HouseListViewController: UITableViewController, HouseListControllerDelegate {
     
     var houseListViewModel = HouseListViewModel()
+    var webService: WebServiceProtocol?
     private var pageNumber = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         houseListViewModel.delegate = self
+        
+        if let webService = webService {
+            houseListViewModel.webService = webService
+        }
+        else {
+            houseListViewModel.webService = WebService()
+        }
+        
         houseListViewModel.fetchHouses(pageNumber: pageNumber)
     }
     
@@ -101,6 +110,7 @@ class HouseListViewController: UITableViewController, HouseListControllerDelegat
         let houseDetailsVC = UIStoryboard(name: "HouseDetails", bundle: nil).instantiateViewController(withIdentifier: "houseDetailsVC") as! HouseDetailsViewController
         houseDetailsVC.pageTitle = houseListViewModel.houseAtIndex(indexPath.row).name
         houseDetailsVC.house = houseListViewModel.houses[indexPath.row]
+        houseDetailsVC.webService = WebService()
         self.navigationController?.pushViewController(houseDetailsVC, animated: true)
     }
     

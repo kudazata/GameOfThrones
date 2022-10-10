@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum Causation {
-    case bad
-    case good
-}
-
 /// The different error types that might occur when making network calls
 enum NetworkError: Error {
     case badUrl
@@ -35,8 +30,16 @@ struct Resource<T> {
 }
 
 
+///This is a protocol that the WebService will conform to so as to allow us to mock it for testing purposes
+protocol WebServiceProtocol {
+    func getHouses(pageNumber: Int, completion: @escaping ([House]?, NetworkError?) -> Void)
+    func getCharacter(url: String, completion: @escaping (Character?, NetworkError?) -> Void)
+    func getHouse(url: String, completion: @escaping (House?, NetworkError?) -> Void)
+}
+
+
 /// The class responsible for all network calls within the app
-final class WebService {
+final class WebService: WebServiceProtocol {
     
     /// Generic network caller that can take in and return any type of object
     /// - Parameters:

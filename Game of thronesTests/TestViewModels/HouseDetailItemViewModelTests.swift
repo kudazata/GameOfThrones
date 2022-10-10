@@ -10,35 +10,28 @@ import XCTest
 
 class HouseDetailItemViewModelTests: XCTestCase {
 
-    var houseDetailItemViewModel: HouseDetailItemViewModel!
+    var houseDetailItem: HouseDetailItem!
+    var sut: HouseDetailItemViewModel!
     
     override func setUpWithError() throws {
-
+        houseDetailItem = HouseDetailItem(title: "Name", value: "King Kuda")
+        sut = HouseDetailItemViewModel(houseDetailItem)
     }
 
     override func tearDownWithError() throws {
+        houseDetailItem = nil
+        sut = nil
     }
     
     /// Ensure that HouseDetailItemViewModel returns the correct value for 'Title' property
     func test_should_return_correct_title() {
-        let houseDetailItem = HouseDetailItem(title: "Name", value: "King Kuda")
-        let houseDetailItemViewModel = HouseDetailItemViewModel(houseDetailItem)
-        XCTAssertEqual(houseDetailItemViewModel.title, "Name")
+        XCTAssertEqual(sut.title, "Name")
     }
     
     /// Ensure that HouseDetailItemViewModel returns the correct value for 'Value' property
     func test_should_return_correct_value() {
-        let houseDetailItem = HouseDetailItem(title: "Name", value: "King Kuda")
-        let houseDetailItemViewModel = HouseDetailItemViewModel(houseDetailItem)
-        XCTAssertEqual(houseDetailItemViewModel.value, "King Kuda")
+        XCTAssertEqual(sut.value, "King Kuda")
     }
 
-    
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }

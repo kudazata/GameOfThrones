@@ -11,7 +11,7 @@ import XCTest
 class HouseDetailsViewModelTests: XCTestCase {
     
     var house: House!
-    var houseDetailsViewModel: HouseDetailsViewModel!
+    var sut: HouseDetailsViewModel!
 
     override func setUpWithError() throws {
         
@@ -32,32 +32,35 @@ class HouseDetailsViewModelTests: XCTestCase {
                       cadetBranches: ["https://anapioficeandfire.com/api/houses/6", "https://anapioficeandfire.com/api/houses/8"],
                       swornMembers: ["https://anapioficeandfire.com/api/characters/298", "https://anapioficeandfire.com/api/characters/1301"])
         
-        houseDetailsViewModel = HouseDetailsViewModel()
-        houseDetailsViewModel.house = house
+        sut = HouseDetailsViewModel()
+        sut.webService = WebServiceMock(shouldReturnError: false)
+        sut.house = house
+        sut.getHouseDetails()
     
     }
 
     override func tearDownWithError() throws {
+        sut = nil
         
     }
     
     /// Ensure that HouseViewModel returns one section
     func testNumber_of_sections_should_Return_one() {
-        XCTAssertEqual(houseDetailsViewModel.numberOfSections, 1)
+        XCTAssertEqual(sut.numberOfSections, 1)
     }
     
     /// Ensure that HouseViewModel returns the correct number of rows for a given section
     func test_should_return_correct_number_of_rows() {
-        houseDetailsViewModel.populateHouseDetails()
-        XCTAssertEqual(houseDetailsViewModel.numberOfRowsInSection(0), 9)
+        sut.populateHouseDetails()
+        XCTAssertEqual(sut.numberOfRowsInSection(0), 15)
     }
     
     /// Ensure that HouseViewModel returns the correct HouseDetailtem for a given row with the correct data
     func test_should_return_correct_houseDetailItem_at_index() {
-        houseDetailsViewModel.populateHouseDetails()
-        let houseDetailItem1 = houseDetailsViewModel.houseDetailItemForIndex(0)
-        let houseDetailItem2 = houseDetailsViewModel.houseDetailItemForIndex(4)
-        let houseDetailItem3 = houseDetailsViewModel.houseDetailItemForIndex(6)
+        sut.populateHouseDetails()
+        let houseDetailItem1 = sut.houseDetailItemForIndex(0)
+        let houseDetailItem2 = sut.houseDetailItemForIndex(4)
+        let houseDetailItem3 = sut.houseDetailItemForIndex(6)
         XCTAssertEqual(houseDetailItem1.title, "Name")
         XCTAssertEqual(houseDetailItem1.value, "Test House")
         XCTAssertEqual(houseDetailItem2.title, "Titles")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D17247C528F3FC4700555AE8 /* WebServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17247C428F3FC4700555AE8 /* WebServiceMock.swift */; };
 		D1F26C7828D480A70032C155 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F26C7728D480A70032C155 /* AppDelegate.swift */; };
 		D1F26C7A28D480A70032C155 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F26C7928D480A70032C155 /* SceneDelegate.swift */; };
 		D1F26C7F28D480A70032C155 /* HouseList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1F26C7D28D480A70032C155 /* HouseList.storyboard */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D17247C428F3FC4700555AE8 /* WebServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceMock.swift; sourceTree = "<group>"; };
 		D1F26C7428D480A70032C155 /* Game of thrones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game of thrones.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F26C7728D480A70032C155 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1F26C7928D480A70032C155 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D17247C328F3FAD800555AE8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D17247C428F3FC4700555AE8 /* WebServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		D1F26C6B28D480A70032C155 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 		D1F26C8D28D480AB0032C155 /* Game of thronesTests */ = {
 			isa = PBXGroup;
 			children = (
+				D17247C328F3FAD800555AE8 /* Mocks */,
 				D1F26CCC28D9DF1B0032C155 /* TestViewModels */,
 				D1F26CC928D9DB8F0032C155 /* TestViews */,
 			);
@@ -434,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1F26CD228D9EA260032C155 /* HouseDetailsViewModelTests.swift in Sources */,
+				D17247C528F3FC4700555AE8 /* WebServiceMock.swift in Sources */,
 				D1F26CDE28DA75D30032C155 /* HouseDetailCellTests.swift in Sources */,
 				D1F26CDC28DA73B60032C155 /* HouseTableViewCellTests.swift in Sources */,
 				D1F26CD628DA03760032C155 /* HouseDetailItemViewModelTests.swift in Sources */,

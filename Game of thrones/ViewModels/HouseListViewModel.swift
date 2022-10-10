@@ -12,6 +12,8 @@ class HouseListViewModel {
     
     var delegate: HouseListControllerDelegate?
     
+    var webService: WebServiceProtocol?
+    
     /// Array of ALL houses fetched from backend
     var houses = [House]()
     
@@ -52,7 +54,7 @@ class HouseListViewModel {
     /// Network call for fetching Houses from backend.
     /// - Parameter pageNumber: page number for pagination
     func fetchHouses(pageNumber: Int)  {
-        WebService().getHouses(pageNumber: pageNumber) { houses, error in
+        webService?.getHouses(pageNumber: pageNumber) { houses, error in
             
             if let error = error {
                 self.delegate?.errorFetchingHouses(error: error)

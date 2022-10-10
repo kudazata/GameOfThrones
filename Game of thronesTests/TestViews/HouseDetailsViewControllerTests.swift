@@ -13,11 +13,8 @@ class HouseDetailsViewControllerTests: XCTestCase {
     var sut: HouseDetailsViewController!
     var house: House!
     var houseDetailsViewModel: HouseDetailsViewModel!
-    
 
     override func setUpWithError() throws {
-        
-        sut = UIStoryboard(name: "HouseDetails", bundle: nil).instantiateViewController(withIdentifier: "houseDetailsVC") as? HouseDetailsViewController
         
         house = House(url: "",
                       name: "Test House",
@@ -36,6 +33,11 @@ class HouseDetailsViewControllerTests: XCTestCase {
                       cadetBranches: ["https://anapioficeandfire.com/api/houses/6", "https://anapioficeandfire.com/api/houses/8"],
                       swornMembers: ["https://anapioficeandfire.com/api/characters/298", "https://anapioficeandfire.com/api/characters/1301"])
         
+        sut = UIStoryboard(name: "HouseDetails", bundle: nil).instantiateViewController(withIdentifier: "houseDetailsVC") as? HouseDetailsViewController
+        sut.house = house
+        sut.webService = WebServiceMock(shouldReturnError: false)
+        _ = sut.view
+        
     }
     
     ///Ensure that tableView in HouseDetailsViewController returns correct number of rows
@@ -44,6 +46,7 @@ class HouseDetailsViewControllerTests: XCTestCase {
         houseDetailsViewModel.house = house
         houseDetailsViewModel.populateHouseDetails()
         sut.houseDetailsVM = houseDetailsViewModel
+        
         sut.tableView.reloadData()
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 8)
     }
@@ -54,6 +57,8 @@ class HouseDetailsViewControllerTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        sut = nil
+        house = nil
     }
 
 
